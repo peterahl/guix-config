@@ -35,6 +35,12 @@
    (bootloader grub-efi-bootloader)
    (target "/boot/efi")
    (keyboard-layout keyboard-layout)))
+ (mapped-devices
+  (list (mapped-device
+         (source
+          (uuid "xxx"))
+         (target "cryptroot")
+         (type luks-device-mapping))))
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
@@ -42,7 +48,7 @@
           (type "vfat"))
          (file-system
           (mount-point "/")
-          (device
-           (uuid "xxxx" 'ext4))
-          (type "ext4"))
+          (device "/dev/mapper/cryptroot")
+          (type "ext4")
+          (dependecies mapped-devices))
          %base-file-system)))
