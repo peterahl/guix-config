@@ -25,6 +25,7 @@
   (append
    (list (specification->package "emacs")
          (specification->package "emacs-exwm")
+	 (specification->package "git")
          (specification->package 
            "emacs-desktop-environment")
          (specification->package "nss-certs"))
